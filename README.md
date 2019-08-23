@@ -34,7 +34,7 @@ The PointSeries API allows configuring the visual representation of data markers
 - PointShape: *enum*
 
     | PointShape    | Description                              |
-    | :-----------: | :------------------  ------------------: |
+    | :-----------: | :--------------------------------------: |
     | Rectangle     | The series with rectangle-shaped points  |
     | Triangle      | The series with triangle-shaped points.  |
     | Square        | The series with square-shaped points.    |
