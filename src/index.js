@@ -1,4 +1,4 @@
-/**
+/*
  * LightningChartJS example that showcases a simple scatter series.
  */
 // Import LightningChartJS
