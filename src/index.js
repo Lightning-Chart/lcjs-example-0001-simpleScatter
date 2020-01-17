@@ -35,9 +35,9 @@ const legend = chart.addLegendBox(LegendBoxBuilders.HorizontalLegendBox)
     .setOrigin(UIOrigins.LeftTop)
 
 // Apply Style color for each group
-const smartPhonesColor = new SolidFill({ color: ColorRGBA(255, 0, 255) })
-const laptopColor = new SolidFill({ color: ColorRGBA(0, 255, 255) })
-const smartTvColor = new SolidFill({ color: ColorRGBA(255, 255, 0) })
+const smartPhonesColor = new SolidFill({ color: ColorRGBA(200, 0, 200) })
+const laptopColor = new SolidFill({ color: ColorRGBA(0, 200, 200) })
+const smartTvColor = new SolidFill({ color: ColorRGBA(200, 200, 0) })
 
 // Create series.
 const smartPhonesSeries = chart.addPointSeries({ pointShape: PointShape.Circle })
