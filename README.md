@@ -136,9 +136,9 @@ Direct developer email support can be purchased through a [Support Plan][4] or b
 © Arction Ltd 2009-2020. All rights reserved.
 
 
-[ChartXY]: https://www.arction.com/lightningchart-js-api-documentation/v1.2.0/classes/chartxy.html
-[ColorRGBA]: https://www.arction.com/lightningchart-js-api-documentation/v1.2.0/globals.html#colorrgba
-[PointSeries]: https://www.arction.com/lightningchart-js-api-documentation/v1.2.0/classes/pointseries.html
-[PointShape]: https://www.arction.com/lightningchart-js-api-documentation/v1.2.0/enums/pointshape.html
+[ChartXY]: https://www.arction.com/lightningchart-js-api-documentation/v1.3.0/classes/chartxy.html
+[ColorRGBA]: https://www.arction.com/lightningchart-js-api-documentation/v1.3.0/globals.html#colorrgba
+[PointSeries]: https://www.arction.com/lightningchart-js-api-documentation/v1.3.0/classes/pointseries.html
+[PointShape]: https://www.arction.com/lightningchart-js-api-documentation/v1.3.0/enums/pointshape.html
 [TraceGenerator]: https://arction.github.io/xydata/classes/tracegenerator.html
 
