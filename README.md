@@ -108,11 +108,11 @@ As it was mentioned before, the series accepts points in format `{ x: number, y:
 
 ## API Links
 
-* XY cartesian chart: [ChartXY]
-* RGBA color factory: [ColorRGBA]
-* Point series: [PointSeries]
-* Point Shape options: [PointShape]
-* Random trace data generator: [TraceGenerator]
+* [XY cartesian chart]
+* [RGBA color factory]
+* [Point series]
+* [Point Shape options]
+* [Random trace data generator]
 
 
 ## Support
@@ -136,9 +136,9 @@ Direct developer email support can be purchased through a [Support Plan][4] or b
 © Arction Ltd 2009-2020. All rights reserved.
 
 
-[ChartXY]: https://www.arction.com/lightningchart-js-api-documentation/v1.3.0/classes/chartxy.html
-[ColorRGBA]: https://www.arction.com/lightningchart-js-api-documentation/v1.3.0/globals.html#colorrgba
-[PointSeries]: https://www.arction.com/lightningchart-js-api-documentation/v1.3.0/classes/pointseries.html
-[PointShape]: https://www.arction.com/lightningchart-js-api-documentation/v1.3.0/enums/pointshape.html
-[TraceGenerator]: https://arction.github.io/xydata/classes/tracegenerator.html
+[XY cartesian chart]: https://www.arction.com/lightningchart-js-api-documentation/v2.0.0/classes/chartxy.html
+[RGBA color factory]: https://www.arction.com/lightningchart-js-api-documentation/v2.0.0/globals.html#colorrgba
+[Point series]: https://www.arction.com/lightningchart-js-api-documentation/v2.0.0/classes/pointseries.html
+[Point Shape options]: https://www.arction.com/lightningchart-js-api-documentation/v2.0.0/enums/pointshape.html
+[Random trace data generator]: https://arction.github.io/xydata/classes/tracegenerator.html
 

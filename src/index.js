@@ -15,15 +15,21 @@ const {
     UIElementBuilders,
     UIButtonPictures,
     UIOrigins,
-    LegendBoxBuilders
+    LegendBoxBuilders,
+    Themes
 } = lcjs
 
-// Create a XY Chart.
+// Decide on an origin for DateTime axis.
 const dateOrigin = new Date(2018, 6, 1)
+// Create a XY Chart.
 const chart = lightningChart().ChartXY({
-    defaultAxisXTickStrategy: AxisTickStrategies.DateTime(dateOrigin)
+    // theme: Themes.dark
 })
-    .setTitle('Product Sales')
+
+// Modify the default X Axis to use DateTime TickStrategy, and set the origin for the DateTime Axis.
+chart.getDefaultAxisX().setTickStrategy(AxisTickStrategies.DateTime, (tickStrategy) => tickStrategy.setDateOrigin(dateOrigin))
+
+chart.setTitle('Product Sales')
     .setAutoCursor(cursor => {
         cursor.disposeTickMarkerY()
         cursor.setGridStrokeYStyle(emptyLine)
