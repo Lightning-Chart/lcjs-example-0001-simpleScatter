@@ -37,8 +37,6 @@ chart.setTitle('Product Sales')
 
 // Create a LegendBox as part of the chart.
 const legend = chart.addLegendBox(LegendBoxBuilders.HorizontalLegendBox)
-    .setPosition({ x: 5, y: 95 })
-    .setOrigin(UIOrigins.LeftTop)
 
 // Apply Style color for each group
 const smartPhonesColor = new SolidFill({ color: ColorRGBA(200, 0, 200) })
@@ -362,27 +360,27 @@ smartTvSeries.add(smartTvData.map((point) => ({ x: point.x * dataFrequency, y: p
 // Add series to LegendBox and style entries.
 legend.add(
     smartPhonesSeries,
-    true,
-    'Product Sales',
-    UIElementBuilders.CheckBox
-        .setPictureOff(UIButtonPictures.Circle)
-        .setPictureOn(UIButtonPictures.Circle)
+    {
+        builder: UIElementBuilders.CheckBox
+            .setPictureOff(UIButtonPictures.Circle)
+            .setPictureOn(UIButtonPictures.Circle)
+    }
 )
 legend.add(
     laptopsSeries,
-    true,
-    'Product Sales',
-    UIElementBuilders.CheckBox
-        .setPictureOff(UIButtonPictures.Rectangle)
-        .setPictureOn(UIButtonPictures.Rectangle)
+    {
+        builder: UIElementBuilders.CheckBox
+            .setPictureOff(UIButtonPictures.Rectangle)
+            .setPictureOn(UIButtonPictures.Rectangle)
+    }
 )
 legend.add(
     smartTvSeries,
-    true,
-    'Product Sales',
-    UIElementBuilders.CheckBox
-        .setPictureOff(UIButtonPictures.Diamond)
-        .setPictureOn(UIButtonPictures.Diamond)
+    {
+        builder: UIElementBuilders.CheckBox
+            .setPictureOff(UIButtonPictures.Diamond)
+            .setPictureOn(UIButtonPictures.Diamond)
+    }
 )
 
 // Enable AutoCursor auto-fill.
