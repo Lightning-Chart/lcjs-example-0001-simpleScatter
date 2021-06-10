@@ -1,6 +1,6 @@
-# Scatter Chart
+# JavaScript Scatter Chart
 
-![Scatter Chart](simpleScatter.png)
+![JavaScript Scatter Chart](simpleScatter.png)
 
 This demo application belongs to the set of examples for LightningChart JS, data visualization library for JavaScript.
 
