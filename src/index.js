@@ -14,7 +14,6 @@ const {
     ColorRGBA,
     UIElementBuilders,
     UIButtonPictures,
-    UIOrigins,
     LegendBoxBuilders,
     Themes
 } = lcjs
@@ -23,7 +22,7 @@ const {
 const dateOrigin = new Date(2018, 6, 1)
 // Create a XY Chart.
 const chart = lightningChart().ChartXY({
-    // theme: Themes.dark
+    // theme: Themes.darkGold
 })
 
 // Modify the default X Axis to use DateTime TickStrategy, and set the origin for the DateTime Axis.
@@ -37,26 +36,23 @@ chart.setTitle('Product Sales')
 
 // Create a LegendBox as part of the chart.
 const legend = chart.addLegendBox(LegendBoxBuilders.HorizontalLegendBox)
-
-// Apply Style color for each group
-const smartPhonesColor = new SolidFill({ color: ColorRGBA(200, 0, 200) })
-const laptopColor = new SolidFill({ color: ColorRGBA(0, 200, 200) })
-const smartTvColor = new SolidFill({ color: ColorRGBA(200, 200, 0) })
+    // Dispose example UI elements automatically if they take too much space. This is to avoid bad UI on mobile / etc. devices.
+    .setAutoDispose({
+        type: 'max-width',
+        maxWidth: 0.80,
+    })
 
 // Create series.
 const smartPhonesSeries = chart.addPointSeries({ pointShape: PointShape.Circle })
     .setName('Smart Phones')
-    .setPointFillStyle(smartPhonesColor)
     .setPointSize(10)
 
 const laptopsSeries = chart.addPointSeries({ pointShape: PointShape.Square })
     .setName('Laptops')
-    .setPointFillStyle(laptopColor)
     .setPointSize(10)
 
 const smartTvSeries = chart.addPointSeries({ pointShape: PointShape.Triangle })
     .setName('Smart TV')
-    .setPointFillStyle(smartTvColor)
     .setPointSize(10)
 
 // Generate some points using for each day of 3 months
