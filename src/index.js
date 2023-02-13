@@ -15,7 +15,7 @@ const {
     UIElementBuilders,
     UIButtonPictures,
     LegendBoxBuilders,
-    Themes
+    Themes,
 } = lcjs
 
 // Decide on an origin for DateTime axis.
@@ -28,44 +28,34 @@ const chart = lightningChart().ChartXY({
 // Modify the default X Axis to use DateTime TickStrategy, and set the origin for the DateTime Axis.
 chart.getDefaultAxisX().setTickStrategy(AxisTickStrategies.DateTime, (tickStrategy) => tickStrategy.setDateOrigin(dateOrigin))
 
-chart.setTitle('Product Sales')
-    .setAutoCursor(cursor => {
-        cursor.disposeTickMarkerY()
-        cursor.setGridStrokeYStyle(emptyLine)
-    })
+chart.setTitle('Product Sales').setAutoCursor((cursor) => {
+    cursor.setTickMarkerYVisible(false)
+    cursor.setGridStrokeYStyle(emptyLine)
+})
 
 // Create a LegendBox as part of the chart.
-const legend = chart.addLegendBox(LegendBoxBuilders.HorizontalLegendBox)
+const legend = chart
+    .addLegendBox(LegendBoxBuilders.HorizontalLegendBox)
     // Dispose example UI elements automatically if they take too much space. This is to avoid bad UI on mobile / etc. devices.
     .setAutoDispose({
         type: 'max-width',
-        maxWidth: 0.80,
+        maxWidth: 0.8,
     })
 
 // Create series.
-const smartPhonesSeries = chart.addPointSeries({ pointShape: PointShape.Circle })
-    .setName('Smart Phones')
-    .setPointSize(10)
+const smartPhonesSeries = chart.addPointSeries({ pointShape: PointShape.Circle }).setName('Smart Phones').setPointSize(10)
 
-const laptopsSeries = chart.addPointSeries({ pointShape: PointShape.Square })
-    .setName('Laptops')
-    .setPointSize(10)
+const laptopsSeries = chart.addPointSeries({ pointShape: PointShape.Square }).setName('Laptops').setPointSize(10)
 
-const smartTvSeries = chart.addPointSeries({ pointShape: PointShape.Triangle })
-    .setName('Smart TV')
-    .setPointSize(10)
+const smartTvSeries = chart.addPointSeries({ pointShape: PointShape.Triangle }).setName('Smart TV').setPointSize(10)
 
 // Generate some points using for each day of 3 months
 const dataFrequency = 1000 * 60 * 60 * 24
 
 // Setup view nicely.
-chart.getDefaultAxisX()
-    .setInterval(0, 92 * dataFrequency)
+chart.getDefaultAxisX().setInterval({ start: 0, end: 92 * dataFrequency, stopAxisAfter: false })
 
-chart.getDefaultAxisY()
-    .setScrollStrategy(undefined)
-    .setInterval(0, 2000)
-    .setTitle('Units Sold')
+chart.getDefaultAxisY().setScrollStrategy(undefined).setTitle('Units Sold').setInterval({ start: 0, end: 2000, stopAxisAfter: false })
 
 // Data for the plotting
 const smartPhoneData = [
@@ -159,7 +149,7 @@ const smartPhoneData = [
     { x: 87, y: 1840 },
     { x: 88, y: 1872 },
     { x: 89, y: 1900 },
-    { x: 90, y: 1932 }
+    { x: 90, y: 1932 },
 ]
 const laptopsData = [
     { x: 0, y: 70 },
@@ -252,7 +242,7 @@ const laptopsData = [
     { x: 87, y: 844.4 },
     { x: 88, y: 853.6 },
     { x: 89, y: 870.8 },
-    { x: 90, y: 886 }
+    { x: 90, y: 886 },
 ]
 const smartTvData = [
     { x: 0, y: 10 },
@@ -345,7 +335,7 @@ const smartTvData = [
     { x: 87, y: 385.4 },
     { x: 88, y: 390.6 },
     { x: 89, y: 396.8 },
-    { x: 90, y: 406 }
+    { x: 90, y: 406 },
 ]
 
 // Adding points to the series
@@ -354,36 +344,21 @@ laptopsSeries.add(laptopsData.map((point) => ({ x: point.x * dataFrequency, y: p
 smartTvSeries.add(smartTvData.map((point) => ({ x: point.x * dataFrequency, y: point.y })))
 
 // Add series to LegendBox and style entries.
-legend.add(
-    smartPhonesSeries,
-    {
-        builder: UIElementBuilders.CheckBox
-            .setPictureOff(UIButtonPictures.Circle)
-            .setPictureOn(UIButtonPictures.Circle)
-    }
-)
-legend.add(
-    laptopsSeries,
-    {
-        builder: UIElementBuilders.CheckBox
-            .setPictureOff(UIButtonPictures.Rectangle)
-            .setPictureOn(UIButtonPictures.Rectangle)
-    }
-)
-legend.add(
-    smartTvSeries,
-    {
-        builder: UIElementBuilders.CheckBox
-            .setPictureOff(UIButtonPictures.Diamond)
-            .setPictureOn(UIButtonPictures.Diamond)
-    }
-)
+legend.add(smartPhonesSeries, {
+    builder: UIElementBuilders.CheckBox.setPictureOff(UIButtonPictures.Circle).setPictureOn(UIButtonPictures.Circle),
+})
+legend.add(laptopsSeries, {
+    builder: UIElementBuilders.CheckBox.setPictureOff(UIButtonPictures.Rectangle).setPictureOn(UIButtonPictures.Rectangle),
+})
+legend.add(smartTvSeries, {
+    builder: UIElementBuilders.CheckBox.setPictureOff(UIButtonPictures.Diamond).setPictureOn(UIButtonPictures.Diamond),
+})
 
 // Enable AutoCursor auto-fill.
 chart.setAutoCursor((cursor) => {
     cursor
         .setResultTableAutoTextStyle(true)
-        .disposeTickMarkerX()
+        .setTickMarkerXVisible(false)
         .setTickMarkerXAutoTextStyle(false)
         .setTickMarkerYAutoTextStyle(false)
 })
