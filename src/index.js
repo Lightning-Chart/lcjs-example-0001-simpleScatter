@@ -24,11 +24,12 @@ const chart = lightningChart().ChartXY({
 })
 
 // Modify the default X Axis to use DateTime TickStrategy, and set the axis interval
-chart.getDefaultAxisX()
+chart
+    .getDefaultAxisX()
     .setTickStrategy(AxisTickStrategies.DateTime)
     .setInterval({
         start: new Date(2018, 6, 1).getTime(),
-        end: new Date(2018, 8, 29).getTime()
+        end: new Date(2018, 8, 29).getTime(),
     })
 
 chart.getDefaultAxisY().setScrollStrategy(undefined).setTitle('Units Sold').setInterval({ start: 0, end: 2000, stopAxisAfter: false })
@@ -339,15 +340,9 @@ laptopsSeries.add(laptopsData)
 smartTvSeries.add(smartTvData)
 
 // Add series to LegendBox and style entries.
-legend.add(smartPhonesSeries, {
-    builder: UIElementBuilders.CheckBox.setPictureOff(UIButtonPictures.Circle).setPictureOn(UIButtonPictures.Circle),
-})
-legend.add(laptopsSeries, {
-    builder: UIElementBuilders.CheckBox.setPictureOff(UIButtonPictures.Rectangle).setPictureOn(UIButtonPictures.Rectangle),
-})
-legend.add(smartTvSeries, {
-    builder: UIElementBuilders.CheckBox.setPictureOff(UIButtonPictures.Diamond).setPictureOn(UIButtonPictures.Diamond),
-})
+legend.add(smartPhonesSeries)
+legend.add(laptopsSeries)
+legend.add(smartTvSeries)
 
 // Enable AutoCursor auto-fill.
 chart.setAutoCursor((cursor) => {
