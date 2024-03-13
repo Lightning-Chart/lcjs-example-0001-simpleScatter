@@ -20,7 +20,7 @@ const {
 
 // Create a XY Chart.
 const chart = lightningChart().ChartXY({
-    // theme: Themes.darkGold
+    theme: Themes[new URLSearchParams(window.location.search).get('theme') || 'darkGold'] || undefined,
 })
 
 // Modify the default X Axis to use DateTime TickStrategy, and set the axis interval
