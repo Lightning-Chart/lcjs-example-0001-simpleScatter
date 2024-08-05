@@ -2,21 +2,10 @@
  * LightningChartJS example that showcases a simple scatter series.
  */
 // Import LightningChartJS
-const lcjs = require('@arction/lcjs')
+const lcjs = require('@lightningchart/lcjs')
 
 // Extract required parts from LightningChartJS.
-const {
-    lightningChart,
-    AxisTickStrategies,
-    emptyLine,
-    PointShape,
-    SolidFill,
-    ColorRGBA,
-    UIElementBuilders,
-    UIButtonPictures,
-    LegendBoxBuilders,
-    Themes,
-} = lcjs
+const { lightningChart, AxisTickStrategies, emptyLine, PointShape, emptyFill, LegendBoxBuilders, Themes } = lcjs
 
 // Create a XY Chart.
 const chart = lightningChart({
@@ -34,9 +23,13 @@ chart
         end: new Date(2018, 8, 29).getTime(),
     })
 
-chart.getDefaultAxisY().setScrollStrategy(undefined).setTitle('Units Sold').setInterval({ start: 0, end: 2000, stopAxisAfter: false })
+chart.axisY
+    .setScrollStrategy(undefined)
+    .setTitle('Revenue')
+    .setUnits('$')
+    .setInterval({ start: 0, end: 2000, stopAxisAfter: false })
 
-chart.setTitle('Product Sales').setAutoCursor((cursor) => {
+chart.setTitle('Product Sales').setCursor((cursor) => {
     cursor.setTickMarkerYVisible(false)
     cursor.setGridStrokeYStyle(emptyLine)
 })
@@ -51,9 +44,27 @@ const legend = chart
     })
 
 // Create series.
-const smartPhonesSeries = chart.addPointSeries({ pointShape: PointShape.Circle }).setName('Smart Phones').setPointSize(10)
-const laptopsSeries = chart.addPointSeries({ pointShape: PointShape.Square }).setName('Laptops').setPointSize(10)
-const smartTvSeries = chart.addPointSeries({ pointShape: PointShape.Triangle }).setName('Smart TV').setPointSize(10)
+const smartPhonesSeries = chart
+    .addPointLineAreaSeries({ dataPattern: 'ProgressiveX' })
+    .setAreaFillStyle(emptyFill)
+    .setStrokeStyle(emptyLine)
+    .setPointShape(PointShape.Circle)
+    .setName('Smart Phones')
+    .setPointSize(10)
+const laptopsSeries = chart
+    .addPointLineAreaSeries({ dataPattern: 'ProgressiveX' })
+    .setAreaFillStyle(emptyFill)
+    .setStrokeStyle(emptyLine)
+    .setPointShape(PointShape.Star)
+    .setName('Laptops')
+    .setPointSize(10)
+const smartTvSeries = chart
+    .addPointLineAreaSeries({ dataPattern: 'ProgressiveX' })
+    .setAreaFillStyle(emptyFill)
+    .setStrokeStyle(emptyLine)
+    .setPointShape(PointShape.Triangle)
+    .setName('Smart TV')
+    .setPointSize(10)
 
 // Data for the plotting
 const smartPhoneData = [
@@ -346,11 +357,6 @@ legend.add(smartPhonesSeries)
 legend.add(laptopsSeries)
 legend.add(smartTvSeries)
 
-// Enable AutoCursor auto-fill.
-chart.setAutoCursor((cursor) => {
-    cursor
-        .setResultTableAutoTextStyle(true)
-        .setTickMarkerXVisible(false)
-        .setTickMarkerXAutoTextStyle(false)
-        .setTickMarkerYAutoTextStyle(false)
+chart.setCursor((cursor) => {
+    cursor.setTickMarkerXVisible(false)
 })
