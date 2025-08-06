@@ -5,7 +5,7 @@
 const lcjs = require('@lightningchart/lcjs')
 
 // Extract required parts from LightningChartJS.
-const { lightningChart, AxisTickStrategies, emptyLine, PointShape, emptyFill, LegendBoxBuilders, Themes } = lcjs
+const { lightningChart, AxisTickStrategies, emptyLine, PointShape, emptyFill, Themes } = lcjs
 
 // Create a XY Chart.
 const chart = lightningChart({
@@ -23,48 +23,17 @@ chart
         end: new Date(2018, 8, 29).getTime(),
     })
 
-chart.axisY
-    .setScrollStrategy(undefined)
-    .setTitle('Revenue')
-    .setUnits('$')
-    .setInterval({ start: 0, end: 2000, stopAxisAfter: false })
+chart.axisY.setScrollStrategy(undefined).setTitle('Revenue').setUnits('$').setInterval({ start: 0, end: 2000, stopAxisAfter: false })
 
 chart.setTitle('Product Sales').setCursor((cursor) => {
     cursor.setTickMarkerYVisible(false)
     cursor.setGridStrokeYStyle(emptyLine)
 })
 
-// Create a LegendBox as part of the chart.
-const legend = chart
-    .addLegendBox(LegendBoxBuilders.HorizontalLegendBox)
-    // Dispose example UI elements automatically if they take too much space. This is to avoid bad UI on mobile / etc. devices.
-    .setAutoDispose({
-        type: 'max-width',
-        maxWidth: 0.8,
-    })
-
 // Create series.
-const smartPhonesSeries = chart
-    .addPointLineAreaSeries({ dataPattern: 'ProgressiveX' })
-    .setAreaFillStyle(emptyFill)
-    .setStrokeStyle(emptyLine)
-    .setPointShape(PointShape.Circle)
-    .setName('Smart Phones')
-    .setPointSize(10)
-const laptopsSeries = chart
-    .addPointLineAreaSeries({ dataPattern: 'ProgressiveX' })
-    .setAreaFillStyle(emptyFill)
-    .setStrokeStyle(emptyLine)
-    .setPointShape(PointShape.Star)
-    .setName('Laptops')
-    .setPointSize(10)
-const smartTvSeries = chart
-    .addPointLineAreaSeries({ dataPattern: 'ProgressiveX' })
-    .setAreaFillStyle(emptyFill)
-    .setStrokeStyle(emptyLine)
-    .setPointShape(PointShape.Triangle)
-    .setName('Smart TV')
-    .setPointSize(10)
+const smartPhonesSeries = chart.addPointSeries().setPointShape(PointShape.Circle).setName('Smart Phones').setPointSize(10)
+const laptopsSeries = chart.addPointSeries().setPointShape(PointShape.Star).setName('Laptops').setPointSize(10)
+const smartTvSeries = chart.addPointSeries().setPointShape(PointShape.Triangle).setName('Smart TV').setPointSize(10)
 
 // Data for the plotting
 const smartPhoneData = [
@@ -348,14 +317,9 @@ const smartTvData = [
 ]
 
 // Adding points to the series
-smartPhonesSeries.add(smartPhoneData)
-laptopsSeries.add(laptopsData)
-smartTvSeries.add(smartTvData)
-
-// Add series to LegendBox and style entries.
-legend.add(smartPhonesSeries)
-legend.add(laptopsSeries)
-legend.add(smartTvSeries)
+smartPhonesSeries.appendJSON(smartPhoneData)
+laptopsSeries.appendJSON(laptopsData)
+smartTvSeries.appendJSON(smartTvData)
 
 chart.setCursor((cursor) => {
     cursor.setTickMarkerXVisible(false)
