@@ -5,7 +5,7 @@
 const lcjs = require('@lightningchart/lcjs')
 
 // Extract required parts from LightningChartJS.
-const { lightningChart, AxisTickStrategies, emptyLine, PointShape, emptyFill, Themes } = lcjs
+const { lightningChart, AxisTickStrategies, emptyLine, PointShape, emptyFill, Themes, ColorPalettes } = lcjs
 
 // Create a XY Chart.
 const chart = lightningChart({
@@ -31,9 +31,9 @@ chart.setTitle('Product Sales').setCursor((cursor) => {
 })
 
 // Create series.
-const smartPhonesSeries = chart.addPointSeries().setPointShape(PointShape.Circle).setName('Smart Phones').setPointSize(10)
-const laptopsSeries = chart.addPointSeries().setPointShape(PointShape.Star).setName('Laptops').setPointSize(10)
-const smartTvSeries = chart.addPointSeries().setPointShape(PointShape.Triangle).setName('Smart TV').setPointSize(10)
+const smartPhonesSeries = chart.addPointSeries({automaticColorIndex: 0}).setPointShape(PointShape.Circle).setName('Smart Phones').setPointSize(10)
+const laptopsSeries = chart.addPointSeries({automaticColorIndex: 2}).setPointShape(PointShape.Star).setName('Laptops').setPointSize(10)
+const smartTvSeries = chart.addPointSeries({automaticColorIndex: 4}).setPointShape(PointShape.Triangle).setName('Smart TV').setPointSize(10)
 
 // Data for the plotting
 const smartPhoneData = [
