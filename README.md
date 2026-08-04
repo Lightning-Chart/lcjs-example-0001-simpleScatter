@@ -34,7 +34,7 @@ const pointSeries = chart.addPointSeries()
 
 The PointSeries API allows configuring the visual representation of data markers.
 
--   PointShape: _enum_
+- PointShape: _enum_
 
     | PointShape |               Description               |
     | :--------: | :-------------------------------------: |
@@ -49,20 +49,20 @@ The PointSeries API allows configuring the visual representation of data markers
     const pointSeries = chart.addPointSeries({ pointShape: PointShape.Circle })
     ```
 
--   PointSize: _number_
+- PointSize: _number_
 
     ```javascript
     pointSeries.setPointSize(5.0)
     ```
 
--   FillStyle
-    Scatter Series with markers provides an ability to specify a fill style of data markers as well as individual point fill style (explained further).
+- FillStyle
+  Scatter Series with markers provides an ability to specify a fill style of data markers as well as individual point fill style (explained further).
 
     ```javascript
     pointSeries.setPointFillStyle(fillStyleObject)
     ```
 
--   IndividualPointFill: _FillStyle_
+- IndividualPointFill: _FillStyle_
 
     The style indicates individual per point coloring. The style enables the usage of individual fill taken from the input.
     The series can accept points in format `{ x: number, y: number, color: Color }`
@@ -77,22 +77,22 @@ The PointSeries API allows configuring the visual representation of data markers
 
 As it was mentioned before, the series accepts points in format `{ x: number, y: number: color: Color }` with specified IndividualPointFill to enable individual point coloring or `{ x: number, y: number }` for other fill styles. Any number of points can be added with a single call similarly to line series with point markers.
 
--   Dataset without colors. If IndividualPointFill is specified, the fallback color is used. Otherwise, the specified fill style is used.
+- Dataset without colors. If IndividualPointFill is specified, the fallback color is used. Otherwise, the specified fill style is used.
 
     ```javascript
     // Dataset of Vec2 data points without color.
-    pointSeries.add([
+    pointSeries.appendJSON([
         { x: 5, y: 10 },
         { x: 7.5, y: 20 },
         { x: 10, y: 30 },
     ])
     ```
 
--   Dataset with individual colors. If IndividualPointFill is specified, the color from data point or fallback color is used. Otherwise, the specified fill style is used.
+- Dataset with individual colors. If IndividualPointFill is specified, the color from data point or fallback color is used. Otherwise, the specified fill style is used.
 
     ```javascript
     // Dataset of Vec2Color data points with individual color.
-    pointSeries.add([
+    pointSeries.appendJSON([
         // use red color if IndividualPointFill is specified
         { x: 2.5, y: 0, color: ColorRGBA(255, 0, 0) },
         // use fallback color if IndividualPointFill is specified
@@ -135,9 +135,9 @@ Direct developer email support can be purchased through a [Support Plan][4] or b
 © LightningChart Ltd 2009-2026. All rights reserved.
 
 
-[XY cartesian chart]: https://lightningchart.com/js-charts/api-documentation/v8.3.0/classes/ChartXY.html
-[RGBA color factory]: https://lightningchart.com/js-charts/api-documentation/v8.3.0/functions/ColorRGBA.html
-[Point series]: https://lightningchart.com/js-charts/api-documentation/v8.3.0/classes/PointLineAreaSeries.html
-[Point Shape options]: https://lightningchart.com/js-charts/api-documentation/v8.3.0/enums/PointShape.html
+[XY cartesian chart]: https://lightningchart.com/js-charts/api-documentation/v9.0.0/classes/ChartXY.html
+[RGBA color factory]: https://lightningchart.com/js-charts/api-documentation/v9.0.0/functions/ColorRGBA.html
+[Point series]: https://lightningchart.com/js-charts/api-documentation/v9.0.0/classes/PointLineAreaSeries.html
+[Point Shape options]: https://lightningchart.com/js-charts/api-documentation/v9.0.0/enums/PointShape.html
 [Random trace data generator]: https://lightning-chart.github.io/xydata/classes/tracegenerator.html
 
